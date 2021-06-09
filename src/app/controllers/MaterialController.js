@@ -1,4 +1,5 @@
 const Material = require('../models/Material');
+const User = require("../models/User");
 
 class MaterialController {
   async index(req, res) {
@@ -18,10 +19,15 @@ class MaterialController {
   async store(req, res) {
     
 
-    const { name } = req.body;
+    const { name, user_id } = req.body;
     const verificaName = await Material.findOne({ where: { name } });
     if (verificaName) {
       return res.status(400).json({ error: 'Name already exists.' });
+    }
+
+    const checkUser = await User.findByPk(user_id);
+    if (!checkUser) {
+      return res.status(404).json({ message: "User not found" });
     }
 
     const material = await Material.create(

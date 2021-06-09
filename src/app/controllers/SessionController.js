@@ -29,7 +29,6 @@ class SessionControler {
         }),
       }
 
-      console.log(rep)
     return res.json(rep);
   }
 }
