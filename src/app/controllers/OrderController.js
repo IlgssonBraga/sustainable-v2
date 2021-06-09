@@ -1,4 +1,6 @@
+const Material = require('../models/Material');
 const Order = require('../models/Order');
+const User = require('../models/User');
 
 class OrderController {
   async index(req, res) {
@@ -10,12 +12,24 @@ class OrderController {
     const id = req.params.id;
     const order = await Order.findByPk(id);
     if (!order){
-      return res.status(404).json({message: "order not find"})
+      return res.status(404).json({message: "order not found"})
     }
     return res.json(order);
   }
 
   async store(req, res) {
+
+    const {user_id, material_id} = req.body
+
+    const checkUser = await User.findByPk(user_id);
+    if (!checkUser){
+      return res.status(404).json({message: "User not found"})
+    }
+
+    const checkMaterial = await Material.findByPk(material_id);
+    if (!checkMaterial){
+      return res.status(404).json({message: "Material not found"})
+    }
 
     const order = await Order.create(
       req.body
@@ -39,7 +53,7 @@ class OrderController {
     const id = req.params.id;
     const order = await Order.findByPk(id);
     if (!order){
-      return res.status(404).json({message: "order not find"})
+      return res.status(404).json({message: "order not found"})
     }
 
     order.destroy()
