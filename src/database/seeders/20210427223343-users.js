@@ -3,15 +3,21 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
    
-      return await queryInterface.bulkInsert('users', [{
-        name: 'John Doe',
-        email: 'johndoe@email.com',
-        cpf: '12345678910',
-        type: 'natural',
-        password_hash: '123',
-        created_at: new Date(),
-        updated_at: new Date()
-      }], {});
+      return await queryInterface.bulkInsert(
+        "users",
+        [
+          {
+            name: "John Doe",
+            email: "johndoe@email.com",
+            password_hash:
+             
+              "$2a$08$rnMMHntDbEXI7zfn0Ua.ze/.ed03I7p4fEVYIgBDXX.kqxOfxcgMm",
+            created_at: new Date(),
+            updated_at: new Date(),
+          },
+        ],
+        {}
+      );
     
   },
 

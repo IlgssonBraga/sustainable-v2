@@ -18,14 +18,10 @@ class UserController {
   async store(req, res) {
     
 
-    const { email, cpf } = req.body;
+    const { email } = req.body;
     const verificaEmail = await User.findOne({ where: { email } });
     if (verificaEmail) {
-      return res.status(400).json({ error: 'E-mail already exists.' });
-    }
-    const verificaCpf = await User.findOne({ where: { cpf } });
-    if (verificaCpf) {
-      return res.status(400).json({ error: 'CPF already exists.' });
+      return res.status(400).json({ error: "E-mail already exists." });
     }
     const user = await User.create(
       req.body
@@ -36,13 +32,20 @@ class UserController {
   async update(req, res) {
   
 
-    const { email } = req.body;
+    const { email, cpf } = req.body;
     const user = await User.findByPk(req.params.id);
 
     if (email && email !== user.email) {
       const verificaEmail = await User.findOne({ where: { email } });
       if (verificaEmail) {
         return res.status(400).json({ error: 'E-mail already exists.' });
+      }
+    }
+
+    if (cpf && cpf !== user.cpf) {
+      const verificaCpf = await User.findOne({ where: { cpf } });
+      if (verificaCpf) {
+        return res.status(400).json({ error: "Cpf already exists." });
       }
     }
 

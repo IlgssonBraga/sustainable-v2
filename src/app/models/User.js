@@ -12,7 +12,16 @@ class User extends Model {
         cpf: Sequelize.STRING,
         cnpj: Sequelize.STRING,
         type: Sequelize.STRING,
-        password_hash: Sequelize.STRING
+        password_hash: Sequelize.STRING,
+        phone: Sequelize.STRING,
+        zip_code: Sequelize.STRING,
+        street: Sequelize.STRING,
+        complemento: Sequelize.STRING,
+        neighborhood: Sequelize.STRING,
+        city: Sequelize.STRING,
+        state: Sequelize.STRING,
+        rg: Sequelize.STRING,
+        dispatching_agency: Sequelize.STRING,
       },
       { sequelize }
     );
