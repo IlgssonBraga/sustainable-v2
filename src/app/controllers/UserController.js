@@ -17,7 +17,7 @@ class UserController {
 
   async store(req, res) {
     
-
+console.log(req.body);
     const { email } = req.body;
     const verificaEmail = await User.findOne({ where: { email } });
     if (verificaEmail) {
