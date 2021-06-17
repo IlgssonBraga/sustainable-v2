@@ -1,10 +1,11 @@
 const Material = require('../models/Material');
 const User = require("../models/User");
+const { Op } = require("sequelize");
 
 class MaterialController {
   async index(req, res) {
     const material = await Material.findAll({
-      where: { user_id: req.userId },
+      where: { user_id: { [Op.not]: req.userId } },
       include: User,
     });
     return res.json(material);
