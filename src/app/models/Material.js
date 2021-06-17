@@ -7,15 +7,17 @@ class Material extends Model {
       {
         name: Sequelize.STRING,
         user_id: Sequelize.INTEGER,
-        category: Sequelize.STRING
+        category: Sequelize.STRING,
       },
       { sequelize }
     );
 
-    
     return this;
   }
 
+  static associate(models) {
+    this.belongsTo(models.User, { foreignKey: "user_id" });
+  }
 }
 
 module.exports = Material;
