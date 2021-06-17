@@ -3,7 +3,10 @@ const User = require("../models/User");
 
 class MaterialController {
   async index(req, res) {
-    const material = await Material.findAll({ include: User });
+    const material = await Material.findAll({
+      where: { user_id: req.userId },
+      include: User,
+    });
     return res.json(material);
   }
 
