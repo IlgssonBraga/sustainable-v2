@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/IlgssonBraga/sustainable-v2" target="blank"><img src=".github/LOGO1.png" width="560" alt="Sustainable" /></a>
+  <a href="https://github.com/IlgssonBraga/sustainable-v2" target="blank"><img src=".github/logo.png" width="250" alt="Sustainable" /></a>
 </p> 
 
   <p align="center">Platform that promotes integration between people who want recyclable materials and people who want donate yours materials.</p>
